@@ -12,25 +12,7 @@ fi
 echo "enter consignment-cli"
 cd consignment-cli
 
-if [[ ! -f "cli.go" ]]; then
-    echo "create cli.go"    
-    touch cli.go
-fi
 
-if [[ ! -f "consignment.json" ]]; then
-    echo "create consignment.json"
-    touch consignment.json
-fi
-
-if [[ ! -f "Dockerfile" ]]; then
-    echo "create Dockerfile"
-    touch Dockerfile
-fi
-
-if [[ ! -f "Makefile" ]]; then
-    echo "create Makefile"
-    touch Makefile
-fi
 
 echo "exit consignment-cli"
 cd ..
@@ -56,46 +38,12 @@ if [[ ! -d "consignment" ]]; then
 fi
 cd consignment
 
-if [[ ! -f "consignment.proto" ]]; then
-    echo "create consignment.proto"
-    touch consignment.proto
-fi
 
 echo "exit consignment"
 cd ..
 
 echo "exit proto"
 cd ..
-
-if [[ ! -f "datastore.go" ]]; then
-    echo "create datastore.go"
-    touch datastore.go
-fi
-
-if [[ ! -f "Dockerfile" ]]; then
-    echo "create Dockerfile"
-    touch Dockerfile
-fi
-
-if [[ ! -f "handler.go" ]]; then
-    echo "create handler.go"
-    touch handler.go
-fi
-
-if [[ ! -f "Makefile" ]]; then
-    echo "create Makefile"
-    touch Makefile
-fi
-
-if [[ ! -f "main.go" ]]; then
-    echo "create main.go"
-    touch main.go
-fi
-
-if [[ ! -f "repository.go" ]]; then
-    echo "create repository.go"
-    touch repository.go
-fi
 
 echo "exit consignment-service"
 cd ..
@@ -106,21 +54,6 @@ if [[ ! -d "user-cli" ]]; then
     mkdir user-cli
 fi
 cd user-cli
-
-if [[ ! -f "cli.go" ]]; then
-    echo "create cli.go"
-    touch cli.go
-fi
-
-if [[ ! -f "Dockerfile" ]]; then
-    echo "create Dockerfile"
-    touch Dockerfile
-fi
-
-if [[ ! -f "Makefile" ]]; then
-    echo "create Makefile"
-    touch Makefile
-fi
 
 echo "exit user-cli"
 cd ..
@@ -146,55 +79,11 @@ if [[ ! -d "user" ]]; then
 fi
 cd user
 
-if [[ ! -f "extension.go" ]]; then
-    echo "create extension.go"
-    touch extension.go
-fi
-
-if [[ ! -f "user.proto" ]]; then
-    echo "create user.proto"
-    touch user.proto
-fi
-
 echo "exit user"
 cd ..
 echo "exit proto"
 cd ..
 
-if [[ ! -f "database.go" ]]; then
-    echo "database.go"
-    touch database.go
-fi
-
-if [[ ! -f "Dockerfile" ]]; then
-    echo "create Dockerfile"
-    touch Dockerfile
-fi
-
-if [[ ! -f "handler.go" ]]; then
-    echo "create handler.go"
-    touch handler.go
-fi
-
-if [[ ! -f "main.go" ]]; then
-    echo "create main.go"
-    touch main.go
-fi
-
-if [[ ! -f "Makefile" ]]; then
-    echo "create Makefile"
-    touch Makefile
-fi
-
-if [[ ! -f "repository.go" ]]; then
-    echo "create repository.go"
-    touch repository.go
-fi
-
-if [[ ! -f "token_service.go" ]]; then
-    echo "create token_service.go"
-    touch token_service.go
-fi
 
 echo "exit user-service"
 cd ..
@@ -220,132 +109,20 @@ if [[ ! -d "vessel" ]]; then
 fi
 cd vessel
 
-if [[ ! -f "vessel.proto" ]]; then
-    echo "create vessel.proto"
-    touch vessel.proto
-fi
-
 echo "exit vessel"
 cd ..
 echo "exit proto"
 cd ..
 
-if [[ ! -f "datastore.go" ]]; then
-    echo "create datastore.go"
-    touch datastore.go
-fi
-
-if [[ ! -f "Dockerfile" ]]; then
-    echo "create Dockerfile"
-    touch Dockerfile
-fi
-
-if [[ ! -f "handler.go" ]]; then
-    echo "create handler.go"
-    touch handler.go
-fi
-
-if [[ ! -f "main.go" ]]; then
-    echo "create main.go"
-    touch main.go
-fi
-
-if [[ ! -f "Makefile" ]]; then
-    echo "create Makefile"
-    touch Makefile
-fi
-
-if [[ ! -f "repository.go" ]]; then
-    echo "create repository.go"
-    touch repository.go
-fi
 
 echo "exit vessel-service"
 cd ..
 
-echo "enter vendor+++++++++++++++++++++++++++++++++++++"
-if [[ ! -d "vendor" ]]; then
-    echo "create vendor"
-    mkdir vendor
-fi
-cd vendor
 
-echo "enter github.com++++++++++++++++++++++++++++"
-if [[ ! -d "github.com" ]]; then
-    echo "create github.com"
-    mkdir github.com
-fi
-cd github.com
-
-echo "enter micro+++++++++++++++++++++++++++"
-if [[ ! -d "micro" ]]; then
-    echo "create micro"
-    mkdir micro
-fi
-cd micro
-
-if [[ ! -d "protobuf" ]]; then
-    mkdir protobuf
-    echo "git clone https://github.com/micro/protobuf.git "
-    git clone https://github.com/micro/protobuf.git protobuf
+if [[ ! -d "$GOPATH/src/github.com/micro/protobuf" ]]; then
+    go get -u github.com/micro/protobuf/{proto,protoc-gen-go}
 fi
 
-if [[ ! -d "go-micro" ]]; then
-    git clone https://github.com/micro/go-micro.git go-micro
-fi
-
-echo "exit micro----------------------------"
-cd ..
-
-echo "exit github.com------------------------------"
-cd ..
-
-echo "enter golang.org++++++++++++++++++++++++++++++"
-if [[ ! -d "golang.org" ]]; then
-    echo "create golang.org"
-    mkdir golang.org
-fi
-cd golang.org
-
-echo "enter x+++++++++++++++++++++++++++++++++++++"
-if [[ ! -d "x" ]]; then
-    echo "create x"
-    mkdir x
-fi
-cd x
-
-if [[ ! -d "net" ]]; then
-    echo "create net"
-    mkdir net
-    git clone https://github.com/golang/net.git net
-fi
-
-echo "exit x--------------------------------------"
-cd ..
-
-echo "exit golang.org--------------------------------"
-cd ..
-
-echo "enter google.golang.org++++++++++++++++++++++++"
-if [[ ! -d "google.golang.org" ]]; then
-    echo "create google.golang.org"
-    mkdir google.golang.org
-fi
-cd google.golang.org
-
-if [[ ! -d "grpc" ]]; then
-    echo "create grpc"
-    mkdir grpc
-    git clone https://github.com/grpc/grpc-go.git grpc
-fi
-
-echo "exit google.golang.org------------------------"
-cd ..
-
-echo "exit vendor-----------------------------------------"
-cd ..
-
-go get -u github.com/micro/protobuf/{proto,protoc-gen-go}
 
 if [[ ! -d "$GOPATH/src/github.com/micro/go-micro" ]]; then
     git clone https://github.com/micro/go-micro.git $GOPATH/src/github.com/micro/go-micro
@@ -359,5 +136,108 @@ if [[ ! -d "$GOPATH/src/google.golang.org/grpc" ]]; then
     git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
 fi
 
-go get -u github.com/hashicorp/consul
+if [[ ! -d "$GOPATH/src/google.golang.org/genproto" ]]; then
+    git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto
+fi
+
+
+if [[ ! -d "$GOPATH/src/github.com/micro/cli" ]]; then
+    git clone https://github.com/micro/cli.git $GOPATH/src/github.com/micro/cli
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/micro/go-rcache" ]]; then
+    git clone https://github.com/micro/go-rcache.git $GOPATH/src/github.com/micro/go-rcache
+fi
+
+
+if [[ ! -d "$GOPATH/src/github.com/micro/util" ]]; then
+    git clone https://github.com/micro/util.git $GOPATH/src/github.com/micro/util
+fi
+
+
+if [[ ! -d "$GOPATH/src/github.com/micro/go-log" ]]; then
+    git clone https://github.com/micro/go-log.git $GOPATH/src/github.com/micro/go-log
+fi
+
+
+if [[ ! -d "$GOPATH/src/github.com/micro/mdns" ]]; then
+    git clone https://github.com/micro/mdns.git $GOPATH/src/github.com/micro/mdns
+fi
+
+
+if [[ ! -d "$GOPATH/src/github.com/go-log/log" ]]; then
+    git clone https://github.com/go-log/log.git $GOPATH/src/github.com/go-log/log
+fi
+
+
+if [[ ! -d "$GOPATH/src/github.com/mitchellh/mapstructure" ]]; then
+    git clone https://github.com/mitchellh/mapstructure.git $GOPATH/src/github.com/mitchellh/mapstructure
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/mitchellh/go-homedir" ]]; then
+    git clone https://github.com/mitchellh/go-homedir.git $GOPATH/src/github.com/mitchellh/go-homedir
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/mitchellh/hashstructure" ]]; then
+    git clone https://github.com/mitchellh/hashstructure.git $GOPATH/src/github.com/mitchellh/hashstructure
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/hashicorp/consul" ]]; then
+    git clone https://github.com/hashicorp/consul.git $GOPATH/src/github.com/hashicorp/consul
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/hashicorp/serf" ]]; then
+    git clone https://github.com/hashicorp/serf.git $GOPATH/src/github.com/hashicorp/serf
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/hashicorp/go-cleanhttp" ]]; then
+    git clone https://github.com/hashicorp/go-cleanhttp.git $GOPATH/src/github.com/hashicorp/go-cleanhttp
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/hashicorp/go-immutable-radix" ]]; then
+    git clone https://github.com/hashicorp/go-immutable-radix.git $GOPATH/src/github.com/hashicorp/go-immutable-radix
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/hashicorp/golang-lru" ]]; then
+    git clone https://github.com/hashicorp/golang-lru.git $GOPATH/src/github.com/hashicorp/golang-lru
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/hashicorp/go-rootcerts" ]]; then
+    git clone https://github.com/hashicorp/go-rootcerts.git $GOPATH/src/github.com/hashicorp/go-rootcerts
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/miekg/dns" ]]; then
+    git clone https://github.com/miekg/dns.git $GOPATH/src/github.com/miekg/dns
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/pborman/uuid" ]]; then
+    git clone https://github.com/pborman/uuid.git $GOPATH/src/github.com/pborman/uuid
+fi
+
+
+if [[ ! -d "$GOPATH/src/github.com/pkg/errors" ]]; then
+    git clone https://github.com/pkg/errors.git $GOPATH/src/github.com/pkg/errors
+fi
+
+
+if [[ ! -d "$GOPATH/src/github.com/google/uuid" ]]; then
+    git clone https://github.com/google/uuid.git $GOPATH/src/github.com/google/uuid
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/armon/go-metrics" ]]; then
+    git clone https://github.com/armon/go-metrics.git $GOPATH/src/github.com/armon/go-metrics
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/client9/misspell" ]]; then
+    git clone https://github.com/client9/misspell.git $GOPATH/src/github.com/client9/misspell
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/golang/lint" ]]; then
+    git clone https://github.com/golang/lint.git $GOPATH/src/github.com/golang/lint
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/golang/protobuf" ]]; then
+    git clone https://github.com/golang/protobuf.git $GOPATH/src/github.com/golang/protobuf
+fi
+
 
