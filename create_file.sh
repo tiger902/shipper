@@ -240,4 +240,25 @@ if [[ ! -d "$GOPATH/src/github.com/golang/protobuf" ]]; then
     git clone https://github.com/golang/protobuf.git $GOPATH/src/github.com/golang/protobuf
 fi
 
+if [[ ! -d "$GOPATH/src/gopkg.in/mgo.v2" ]]; then
+    go get gopkg.in/mgo.v2
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/jinzhu/gorm" ]]; then
+    git clone https://github.com/jinzhu/gorm.git $GOPATH/src/github.com/jinzhu/gorm
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/satori/go.uuid" ]]; then
+    git clone https://github.com/satori/go.uuid.git $GOPATH/src/github.com/satori/go.uuid
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/jinzhu/inflection" ]]; then
+    git clone https://github.com/jinzhu/inflection.git $GOPATH/src/github.com/jinzhu/inflection
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/lib/pq" ]]; then
+    git clone https://github.com/lib/pq.git $GOPATH/src/github.com/lib/pq
+fi
+
+
 
