@@ -10,6 +10,12 @@
 			"revisionTime": "2018-09-10T20:42:20Z"
 		},
 		{
+			"checksumSHA1": "mUeojTdLEyzYOki70VUAeeYr/wQ=",
+			"path": "github.com/dgrijalva/jwt-go",
+			"revision": "0b96aaa707760d6ab28d9b9d1913ff5993328bae",
+			"revisionTime": "2018-07-19T21:18:23Z"
+		},
+		{
 			"checksumSHA1": "Cpe2eQb2fva8fDwQsLoXiqQxEQE=",
 			"path": "github.com/go-log/log",
 			"revision": "1dd51d329812712ad844d1cf7c5e21ddbfe32de5",
@@ -339,6 +345,18 @@
 			"path": "github.com/satori/go.uuid",
 			"revision": "36e9d2ebbde5e3f13ab2e25625fd453271d6522e",
 			"revisionTime": "2018-01-03T17:44:51Z"
+		},
+		{
+			"checksumSHA1": "oCH3J96RWvO8W4xjix47PModpio=",
+			"path": "golang.org/x/crypto/bcrypt",
+			"revision": "21052ae46654ecf18dfdba0f7c12701a1e2b3164",
+			"revisionTime": "2018-05-09T00:42:30Z"
+		},
+		{
+			"checksumSHA1": "oVPHWesOmZ02vLq2fglGvf+AMgk=",
+			"path": "golang.org/x/crypto/blowfish",
+			"revision": "21052ae46654ecf18dfdba0f7c12701a1e2b3164",
+			"revisionTime": "2018-05-09T00:42:30Z"
 		},
 		{
 			"checksumSHA1": "1hwn8cgg4EVXhCpJIqmMbzqnUo0=",

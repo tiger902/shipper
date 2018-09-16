@@ -2,30 +2,37 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
+	"errors"
+	microclient "github.com/micro/go-micro/client"
+	"github.com/micro/go-micro/cmd"
+	"github.com/micro/go-micro/metadata"
+	pb "github.com/shipper/consignment-service/proto/consignment"
 	"io/ioutil"
 	"log"
 	"os"
-
-	microclient "github.com/micro/go-micro/client"
-	"github.com/micro/go-micro/cmd"
-	pb "github.com/shipper/consignment-service/proto/consignment"
-	"golang.org/x/net/context"
 )
 
 const (
-	defaultFilename = "consignment.json"
+	ADDRESS           = "localhost:50051"
+	DEFAULT_INFO_FILE = "consignment.json"
 )
 
 func parseFile(file string) (*pb.Consignment, error) {
-	var consignment *pb.Consignment
+
 	data, err := ioutil.ReadFile(file)
 	if err != nil {
 		return nil, err
 	}
-	json.Unmarshal(data, &consignment)
 
-	return consignment, err
+	var consignment *pb.Consignment
+	err = json.Unmarshal(data, &consignment)
+	if err != nil {
+		return nil, errors.New("consignment.json file content error")
+	}
+
+	return consignment, nil
 }
 
 func main() {
@@ -35,15 +42,20 @@ func main() {
 	client := pb.NewShippingServiceClient("go.micro.srv.consignment", microclient.DefaultClient)
 
 	// Contact the server and print out its response
-	file := defaultFilename
-	if len(os.Args) > 1 {
-		file = os.Args[1]
+	if len(os.Args) < 3 {
+		log.Fatalln("Not enough arguments expecing file and token.")
 	}
+	infoFile := os.Args[1]
+	token := os.Args[2]
 
-	consignment, err := parseFile(file)
+	consignment, err := parseFile(infoFile)
 	if err != nil {
 		log.Fatalf("Could not parse file: %v", err)
 	}
+
+	tokenContext := metadata.NewContext(context.Background(), map[string]string{
+		"token": token,
+	})
 
 	r, err := client.CreateConsignment(context.TODO(), consignment)
 	if err != nil {
@@ -52,7 +64,7 @@ func main() {
 
 	log.Printf("Created: %t", r.Created)
 
-	getAll, err := client.GetConsignments(context.Background(), &pb.GetRequest{})
+	getAll, err := client.GetConsignments(tokenContext, &pb.GetRequest{})
 	if err != nil {
 		log.Fatalf("Could not list consignment: %v", err)
 	}

@@ -260,5 +260,13 @@ if [[ ! -d "$GOPATH/src/github.com/lib/pq" ]]; then
     git clone https://github.com/lib/pq.git $GOPATH/src/github.com/lib/pq
 fi
 
+if [[ ! -d "$GOPATH/src/golang.org/x/crypto" ]]; then
+    git clone https://github.com/golang/crypto.git $GOPATH/src/golang.org/x/crypto
+fi
+
+if [[ ! -d "$GOPATH/src/github.com/dgrijalva/jwt-go" ]]; then
+    git clone https://github.com/dgrijalva/jwt-go.git $GOPATH/src/github.com/dgrijalva/jwt-go
+fi
+
 
 
