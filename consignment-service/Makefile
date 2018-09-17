@@ -4,7 +4,7 @@ build:
 	  proto/consignment/consignment.proto
 
 	GOOS=linux GOARCH=amd64 go build 
-	docker rmi consignment-service
+	docker rmi -f consignment-service
 	docker build -t consignment-service .
 
 run:
